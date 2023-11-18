@@ -5,7 +5,7 @@
 }
 
 .attribution { 
-    font-size: 11px; 
+    font-size: 2rem; 
     text-align: center; 
 }
 .attribution a {
@@ -13,5 +13,21 @@
  }
  body{
     background:url('./images/bg-intro-desktop.png');
-    background-color:hsl(0, 100%, 74%) 
+    background-color:hsl(0, 100%, 74%); 
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+ }
+ .main{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+ }
+ footer{
+    margin:20px;
+    border:2px solid black;
+    margin-bottom: 20px;
  }
