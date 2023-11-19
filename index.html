@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="main.js" defer></script>
   
   <title>Frontend Mentor | Intro component with sign up form</title>
 
@@ -39,25 +40,37 @@
               name="First Name" 
               type="text" 
               placeholder="First Name"
+              required
             />
+            <span id="errorFirstName" class="error-message"></span>
+        <br>
             <input
               name="Last Name" 
               type="text" 
               placeholder="Last Name"
+              required
             />
+            <span id="errorLastName" class="error-message"></span>
+        <br>
             <input
               name="Email Address" 
               type="text" 
               placeholder="Email Address"
+              required
             />
+            <span id="errorEmail" class="error-message"></span>
+        <br>
             <input
               name="Password" 
               type="text" 
               placeholder="Password"
+              required
             />
-            <button class="submit-button">Claim your free trial </button>
+            <span id="errorPassword" class="error-message"></span>
+        <br>
+            <button type="submit" class="submit-button">Claim your free trial</button>
             <p class="terms">
-              By clicking the button, you are agreeing to our Terms and Services
+              By clicking the button, you are agreeing to our <span>Terms and Services</span>
             </p>
           </form>
         </section>

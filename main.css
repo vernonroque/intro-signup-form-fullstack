@@ -54,7 +54,7 @@
    width:80%;
    background-color:hsl(248, 32%, 49%);
    color:white;
-   padding:10px;
+   padding:15px;
    text-align:center;
    margin:15px 0;
    border-radius: 10px;
@@ -94,8 +94,29 @@
    border-color:hsl(248, 32%, 49%);
    caret-color: hsl(248, 32%, 49%);
  }
+ .submit-button{
+  width:80%;
+  border-radius:5px;
+  margin:10px 0;
+  padding: 15px 0;
+  color:white;
+  background-color: hsl(154, 59%, 51%);
+  font-family:'Poppins',sans-serif;
+  font-size:1rem;
+  border: 1px solid hsl(154, 59%, 51%);
+ }
+ .submit-button:hover{
+  cursor:pointer;
+ }
  footer{
     margin:20px;
     border:2px solid black;
     margin-bottom: 20px;
+ }
+ .terms{
+  color:hsl(246, 25%, 77%);
+
+ }
+ .terms span{
+  color:hsl(0, 100%, 74%)
  }
