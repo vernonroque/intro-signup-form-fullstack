@@ -7,49 +7,100 @@ const inputFields = document.querySelectorAll("input");
 ///getting all the error spans underneath each input field
 const errorFirstMessage = document.getElementById("errorFirstName");
 const errorLastMessage = document.getElementById("errorLastName");
+const errorEmailMessage = document.getElementById("errorEmail");
+const errorPasswordMessage = document.getElementById("errorPassword");
 
 ///getting each input field to help produce the error message
 const firstName = document.querySelector(".firstName");
 const lastName = document.querySelector(".lastName");
+const email = document.querySelector(".email");
+const password = document.querySelector(".password");
 
 
-
+//form submit event listener
 form.addEventListener('submit',(e)=> {
-    //e.preventDefault();
+    e.preventDefault();
     console.log("you submitted the form");
-
-})
-
-submitButton.addEventListener('click',(e)=>{
-    e.preventDefault(); // you have to put this so the default error messages dont appear
     resetErrors();
 
-    ///getting values for each input field
-    const firstNameValue = document.querySelector(".firstName").value;
-    const lastNameValue = document.querySelector(".lastName").value;
+    //i am running certain functions for each input field
+    inputFields.forEach((input)=>{
+        const inputNameAttribute = input.getAttribute("name");
+        const className = input.className;
+        console.log("The class name for the input is >>>", className);
+        console.log("The class attribute is>>>", inputNameAttribute);
 
-    const firstNameAttribute = firstName.getAttribute("name");
-    console.log("Validate the email");
-    console.log("The first name is now>>>", firstNameValue );
-    console.log("The first name attribute>>>>", firstNameAttribute);
+        validateField(className,inputNameAttribute);
 
-    if(!firstNameValue){
-        //console.log("The errorMessage value >>>", errorFirstMessage);
-        firstName.classList.add("error");
+    });
 
-        errorFirstMessage.innerHTML = `
-        <h3>First Name cannot be empty</h3>
-        `
-    }
-    if(!lastNameValue){
-        //console.log("The errorMessage value >>>", errorLastMessage);
-        lastName.classList.add("error");
-
-        errorLastMessage.innerHTML = `
-        <h3>Last Name cannot be empty</h3>
-        `
-    }
 });
+
+///this function validates all the input fields
+const validateField = (selector,attribute) =>{
+
+    const inputValue = document.querySelector(`.${selector}`).value;
+    console.log("The input value is >>>", inputValue);
+    const targetClass = document.querySelector(`.${selector}`);
+    const className = targetClass.className;
+
+
+    console.log("classname is >>>", className);
+
+    if(className === "email"){
+        if(!inputValue){
+            const targetInput = document.querySelector(`.${selector}`);
+            console.log("The target input field >>>",targetInput);
+            targetInput.classList.add("error");
+
+            console.log("email error");
+            errorEmailMessage.innerHTML = `
+            <h3>${attribute} cannot be empty</h3>
+            `
+        }
+        else if(!validateEmail(inputValue)){
+            errorEmailMessage.innerHTML = `
+            <h3>Looks like this is not an ${attribute}</h3>
+            `
+        }
+    }
+
+    if(!inputValue){
+        const targetInput = document.querySelector(`.${selector}`);
+        console.log("The target input field >>>",targetInput);
+        targetInput.classList.add("error");
+
+        if(targetInput.className === "firstName error")
+            {
+                console.log("first name error");
+                errorFirstMessage.innerHTML = `
+                <h3>${attribute} cannot be empty</h3>
+                `
+            }
+        if(targetInput.className === "lastName error")
+            {
+                console.log("last name error");
+                errorLastMessage.innerHTML = `
+                <h3>${attribute} cannot be empty</h3>
+                `
+            }
+        if(targetInput.className === "password error")
+            {
+                console.log("password error");
+                errorPasswordMessage.innerHTML = `
+                <h3>${attribute} cannot be empty</h3>
+                `
+            }
+    }
+
+}
+
+//this validates the email
+const validateEmail=(email)=>{
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
 
 ///Added event listeners to each input field to reset the errors in case they had some
 inputFields.forEach((input)=>{
@@ -66,4 +117,10 @@ function resetErrors(){
 
     errorLastMessage.innerHTML = '';
     lastName.classList.remove("error");
+
+    errorEmailMessage.innerHTML = '';
+    email.classList.remove("error");
+
+    errorPasswordMessage.innerHTML = '';
+    password.classList.remove("error");
 }

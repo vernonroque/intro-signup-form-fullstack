@@ -95,7 +95,7 @@
    border-color:hsl(248, 32%, 49%);
    caret-color: hsl(248, 32%, 49%);
  }
- .firstName.error, .lastName.error{
+ .firstName.error, .lastName.error, .email.error, .password.error{
   outline:none;
   border-color:red;
   background:url('./images/icon-error.svg');
@@ -103,7 +103,8 @@
   background-repeat: no-repeat;
 
  }
- .firstName.error::placeholder,.lastName.error::placeholder{
+ .firstName.error::placeholder,.lastName.error::placeholder
+ ,.email.error::placeholder, .password.error::placeholder{
   visibility:hidden;
  }
  .submit-button{
