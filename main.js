@@ -104,23 +104,33 @@ const validateEmail=(email)=>{
 
 ///Added event listeners to each input field to reset the errors in case they had some
 inputFields.forEach((input)=>{
-    input.addEventListener('input', ()=>{
-        resetErrors();
+    input.addEventListener('keypress', ()=>{
+        const inputClass = input.className;
+        resetErrors(inputClass);
     })
 
 })
 
 ///resetting the error messages and styling for each input field
-function resetErrors(){
-    errorFirstMessage.innerHTML = '';
-    firstName.classList.remove("error");
+function resetErrors(inputClass){
 
-    errorLastMessage.innerHTML = '';
-    lastName.classList.remove("error");
+    if(inputClass === "firstName error"){
+        errorFirstMessage.innerHTML = '';
+        firstName.classList.remove("error");
+    }
 
-    errorEmailMessage.innerHTML = '';
-    email.classList.remove("error");
+    if(inputClass === "lastName error"){
+        errorLastMessage.innerHTML = '';
+        lastName.classList.remove("error");
+    }
 
-    errorPasswordMessage.innerHTML = '';
-    password.classList.remove("error");
+    if(inputClass === "email error"){
+        errorEmailMessage.innerHTML = '';
+        email.classList.remove("error");
+    }
+
+    if(inputClass === "password error"){
+        errorPasswordMessage.innerHTML = '';
+        password.classList.remove("error");
+    }
 }

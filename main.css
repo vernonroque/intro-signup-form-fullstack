@@ -5,7 +5,8 @@
 }
 
 .attribution { 
-    font-size: 2rem; 
+    font:'Poppins',sans-serif;
+    font-size: 1.2rem; 
     text-align: center; 
 }
 .attribution a {
@@ -24,18 +25,18 @@
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
+    /* height:100vh; */
     margin:0 40px;
  }
  .message-container{
-   /* border:2px solid black; */
    width:50%;
-   padding:30px;
+   padding:30px 30px 30px 60px;
  }
  .message-title{
    font-family:'Poppins',sans-serif;
    font-size:3rem;
    color:white;
+   margin-bottom:15px;
  }
  .message-container p{
    font-family:'Poppins', sans-serif;
@@ -139,10 +140,64 @@
     /* border:2px solid black; */
     margin-bottom: 20px;
  }
+
  .terms{
   color:hsl(246, 25%, 77%);
+  text-align:center;
 
  }
  .terms span{
   color:hsl(0, 100%, 74%)
+ }
+
+ @media only screen and (max-width:375px){
+
+  body{
+    width:100%;
+    height:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+  }
+
+  .main{
+    flex-direction:column;
+    margin: 0 auto;
+  }
+  .message-title{
+    font-size:1.5rem;
+    padding:15px;
+    text-align:center;
+  }
+  .message-container{
+    /* border:2px solid black; */
+    width:100%;
+    padding:15px;
+    margin:25px 0;
+  }
+  .message-container p{
+    text-align:center;
+  }
+  .form-section{
+    width:100%;
+    margin-bottom:20px;
+  }
+  .form-header{
+    width:90%;
+  }
+  .actual-form{
+    width:90%;
+  }
+  .actual-form input{
+    width:100%;
+  }
+
+  .submit-button{
+    width:100%;
+  }
+  .error-message{
+    width:100%;
+  }
+
  }
