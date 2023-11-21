@@ -55,12 +55,12 @@ const validateField = (selector,attribute) =>{
 
             console.log("email error");
             errorEmailMessage.innerHTML = `
-            <h3>${attribute} cannot be empty</h3>
+            <p>${attribute} cannot be empty</p>
             `
         }
         else if(!validateEmail(inputValue)){
             errorEmailMessage.innerHTML = `
-            <h3>Looks like this is not an ${attribute}</h3>
+            <p>Looks like this is not an ${attribute}</p>
             `
         }
     }
@@ -74,21 +74,21 @@ const validateField = (selector,attribute) =>{
             {
                 console.log("first name error");
                 errorFirstMessage.innerHTML = `
-                <h3>${attribute} cannot be empty</h3>
+                <p>${attribute} cannot be empty</p>
                 `
             }
         if(targetInput.className === "lastName error")
             {
                 console.log("last name error");
                 errorLastMessage.innerHTML = `
-                <h3>${attribute} cannot be empty</h3>
+                <p>${attribute} cannot be empty</p>
                 `
             }
         if(targetInput.className === "password error")
             {
                 console.log("password error");
                 errorPasswordMessage.innerHTML = `
-                <h3>${attribute} cannot be empty</h3>
+                <p>${attribute} cannot be empty</p>
                 `
             }
     }

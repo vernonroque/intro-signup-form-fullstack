@@ -101,11 +101,16 @@
   background:url('./images/icon-error.svg');
   background-position: right 10px center;
   background-repeat: no-repeat;
-
  }
  .firstName.error::placeholder,.lastName.error::placeholder
  ,.email.error::placeholder, .password.error::placeholder{
   visibility:hidden;
+ }
+ .error-message{
+  width:80%;
+  font-family:'Poppins',sans-serif;
+  color:red;
+  text-align:right;
  }
  .submit-button{
   width:80%;
