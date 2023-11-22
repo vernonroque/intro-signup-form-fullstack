@@ -16,7 +16,7 @@
  body{
     background:url('./images/bg-intro-desktop.png');
     background-color:hsl(0, 100%, 74%); 
-    height:100vh;
+    /* height:100vh; */
     display:flex;
     justify-content:space-around;
     align-items:center;
