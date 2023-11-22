@@ -5,8 +5,9 @@
 }
 
 .attribution { 
-    font:'Poppins',sans-serif;
+    font-family:'Poppins',sans-serif;
     font-size: 1.2rem; 
+    font-weight:600;
     text-align: center; 
 }
 .attribution a {
