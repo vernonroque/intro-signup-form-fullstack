@@ -1,6 +1,6 @@
 # Frontend Mentor - Intro component with sign up form solution
 
-This is a solution to the [Intro component with sign up form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/intro-component-with-signup-form-5cf91bd49edda32581d28fd1). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Intro component with sign up form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/intro-component-with-signup-form-5cf91bd49edda32581d28fd1). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -27,8 +27,8 @@ Users should be able to:
 - View the optimal layout for the site depending on their device's screen size
 - See hover states for all interactive elements on the page
 - Receive an error message when the `form` is submitted if:
-  - Any `input` field is empty. The message for this error should say *"[Field Name] cannot be empty"*
-  - The email address is not formatted correctly (i.e. a correct email address should have this structure: `name@host.tld`). The message for this error should say *"Looks like this is not an email"*
+  - Any `input` field is empty. The message for this error should say _"[Field Name] cannot be empty"_
+  - The email address is not formatted correctly (i.e. a correct email address should have this structure: `name@host.tld`). The message for this error should say _"Looks like this is not an email"_
 
 ### Screenshot
 
@@ -36,7 +36,7 @@ Users should be able to:
 
 Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
+Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
 
 Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
 
@@ -49,37 +49,81 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ## My process
 
+1. I first created the outline and structure in html.
+   -I made sure to create the structure first. I then started doing the
+   css styling to organize
+2. Next, I started doing the CSS styling
+   - I used flexbox to position the containers. I also used flexbox to organize
+     the form header and the actual form
+   - I designed the layout with a desktop screen in mind
+3. I added functionality with javascript
+   - I made sure the form would produce the errors if a user didn't fill in one of the
+     inputs.
+4. I styled the design in CSS for a mobile responsive design
+
 ### Built with
 
 - Semantic HTML5 markup
 - CSS custom properties
+- Javascript
 - Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- Desktop-first workflow
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+1. I learned its best not to use '100vh' when defining the height of a container.
+   -The reason: It causes overflow problems. When the height is fixed, and the content
+   needs to act responsively, the content sometimes spills out of the container and
+   causes unexpected overflow problems. I think the only time ill define a height is
+   for landing page images and the header at the top of a webpage
 
-To see how you can add code snippets, see below:
+DONT DO:
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+body {
+  height: 100vh;
+}
+.main {
+  height: 100vh;
 }
 ```
+
+2. I learned a lot about how to submit the form. There's two ways.
+   - You can add a 'submit' event listener to the form, and then handle the data
+     your liking
+   - You can add a 'click' event listener to the button inside the form, and then
+     handle the data to your liking
+
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+form.addEventListener('submit',(e)=> {
+  ...
 }
+or
+
+submitButton.addEventListener('click', (e)=>{
+  ...
+})
+```
+
+3. I learned how to access the class attribute of a tag
+
+- I need to access the class attribute from each input. I needed to do this
+  for validating each field
+
+```js
+inputFields.forEach((input) => {
+  const className = input.className;
+});
+```
+
+4. I learned how to access any attribute of a tag element
+   -I had to access the "name" attribute for each input field to display the
+   error messages appropriately
+
+```js
+inputFields.forEach((input) => {
+  const inputNameAttribute = input.getAttribute("name");
+});
 ```
 
 If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
