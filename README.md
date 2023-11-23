@@ -1,95 +1,209 @@
-# Frontend Mentor - Intro component with sign up form
+# Frontend Mentor - Intro component with sign up form solution
 
-![Design preview for the Intro component with sign up form coding challenge](./design/desktop-preview.jpg)
+This is a solution to the [Intro component with sign up form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/intro-component-with-signup-form-5cf91bd49edda32581d28fd1). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+## Overview
 
-**To do this challenge, you need a basic understanding of HTML, CSS and JavaScript.**
+### The challenge
 
-## The challenge
-
-Your challenge is to build out this introductory component and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should be able to:
+Users should be able to:
 
 - View the optimal layout for the site depending on their device's screen size
 - See hover states for all interactive elements on the page
 - Receive an error message when the `form` is submitted if:
-  - Any `input` field is empty. The message for this error should say *"[Field Name] cannot be empty"*
-  - The email address is not formatted correctly (i.e. a correct email address should have this structure: `name@host.tld`). The message for this error should say *"Looks like this is not an email"*
+  - Any `input` field is empty. The message for this error should say _"[Field Name] cannot be empty"_
+  - The email address is not formatted correctly (i.e. a correct email address should have this structure: `name@host.tld`). The message for this error should say _"Looks like this is not an email"_
 
-Want some support on the challenge? [Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+### Screenshot
 
-## Where to find everything
+![](./images/signUpForm.png)
+![](./images/signupFormErrors.png)
+![](./images/signupFormMobile.png)
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+### Links
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+- Solution URL: https://github.com/vernonroque/intro-signup-form.git
+- Live Site URL: https://introduction-signup-form.netlify.app/
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+## My process
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+1. I first created the outline and structure in html.
+   -I made sure to create the structure first. I then started doing the
+   css styling to organize
+2. Next, I started doing the CSS styling
+   - I used flexbox to position the containers. I also used flexbox to organize
+     the form header and the actual form
+   - I designed the layout with a desktop screen in mind
+3. I added functionality with javascript
+   - I made sure the form would produce the errors if a user didn't fill in one of the
+     inputs.
+4. I styled the design in CSS for a mobile responsive design
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+### Built with
 
-## Building your project
+- Semantic HTML5 markup
+- CSS custom properties
+- Javascript
+- Flexbox
+- Desktop-first workflow
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+### What I learned
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+1. I learned its best not to use '100vh' when defining the height of a container.
+   -The reason: It causes overflow problems. When the height is fixed, and the content
+   needs to act responsively, the content sometimes spills out of the container and
+   causes unexpected overflow problems. I think the only time ill define a height is
+   for landing page images and the header at the top of a webpage
 
-## Deploying your project
+DONT DO:
 
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+```css
+body {
+  height: 100vh;
+}
+.main {
+  height: 100vh;
+}
+```
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+2. I learned a lot about how to submit the form. There's two ways.
+   - You can add a 'submit' event listener to the form, and then handle the data
+     your liking
+   - You can add a 'click' event listener to the button inside the form, and then
+     handle the data to your liking
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+```js
+form.addEventListener('submit',(e)=> {
+  ...
+}
+or
 
-## Create a custom `README.md`
+submitButton.addEventListener('click', (e)=>{
+  ...
+})
+```
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+3. I learned how to access the class attribute of a tag
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+- I need to access the class attribute from each input. I needed to do this
+  for validating each field
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+```js
+inputFields.forEach((input) => {
+  const className = input.className;
+});
+```
 
-## Submitting your solution
+4. I learned how to access any attribute of a tag element
+   -I had to access the "name" attribute for each input field to display the
+   error messages appropriately
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+```js
+inputFields.forEach((input) => {
+  const inputNameAttribute = input.getAttribute("name");
+});
+```
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+5. I learned how to show if there was an error with one of the input fields
 
-## Sharing your solution
+- First I checked to see if the input field was empty
 
-There are multiple places you can share your solution:
+```js
+if (className === "email") {
+  if (!inputValue) {
+    const targetInput = document.querySelector(`.${selector}`);
+    targetInput.classList.add("error");
 
-1. Share your solution page in the **#finished-projects** channel of the [community](https://www.frontendmentor.io/community). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+    errorEmailMessage.innerHTML = `
+            <p>${attribute} cannot be empty</p>
+            `;
+  }
+}
+```
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
+-If the field was empty, I added the class "error" to the input. That way I could
+use CSS to style it so that it notifies the user there is an error
 
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+```css
+.firstName.error,
+.lastName.error,
+.email.error,
+.password.error {
+  outline: none;
+  border-color: red;
+  background: url("./images/icon-error.svg");
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+}
+```
 
-## Got feedback for us?
+6. I learned that "::placeholder" was a pseudo element
+   -I used it to hide the placeholder value when an error occurred
 
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
+```css
+.firstName.error::placeholder,
+.lastName.error::placeholder,
+.email.error::placeholder,
+.password.error::placeholder {
+  visibility: hidden;
+}
+```
+7. I learned the difference between the array methods .map and .forEach
+    -.map() modifies each element based according to your liking and returns a new array
+    -.forEach() is used to do some kind of function to each element in an array.
+    However, it doesn't return an array.
+    -I used forEach to add an eventListener to each input field
+``````js
 
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
+inputFields.forEach((input)=>{
+    input.addEventListener('keypress', ()=>{
+        const inputClass = input.className;
+        resetErrors(inputClass);
+    })
 
-**Have fun building!** 🚀
+})
+
+``````
+
+### Continued development
+
+I still would like to focus on creating forms. I feel more comfortable now that 
+I've done this project. I'd still like to learn what I do with the values that were
+input in the fields.
+
+That's why I'm thinking about extending this project into a fullstack project.
+
+I also would like to focus on easier ways to add event listeners to multiple items all
+at once.
+
+### Useful resources
+
+- [Chat GPT](https://chat.openai.com/) - I used Chat GPT whenever I was stuck on some
+problem. I used it to help me explain what the problem was and how to fix it.
+- [MDN Web Docs](https://developer.mozilla.org/en-US/) - I used this to help me explain
+certain array methods and other things about css i didnt understand
+
+## Author
+
+- Website - [Vernon Roque](https://developer-portfolio-8cc0c.web.app/)
+- Frontend Mentor - [@vernonroque](https://www.frontendmentor.io/profile/vernonroque)
+- Github - [@vernonroque](https://github.com/vernonroque)
+
+
+## Acknowledgments
+
+Thank you universe.

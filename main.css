@@ -128,9 +128,7 @@
  .submit-button:hover{
   cursor:pointer;
  }
- .inputWrapper{
-  position:relative;
- }
+ 
  .errorFirstIcon{
   position:absolute;
   background:url('./images/icon-error.svg');
