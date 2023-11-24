@@ -1,3 +1,4 @@
+import {sendInfo} from './apis.js'
 const form = document.querySelector('.actual-form');
 const submitButton= document.querySelector('.submit-button');
 
@@ -16,25 +17,70 @@ const lastName = document.querySelector(".lastName");
 const email = document.querySelector(".email");
 const password = document.querySelector(".password");
 
+///creating object for input field values
+const formObj = {};
 
 //form submit event listener
 form.addEventListener('submit',(e)=> {
     e.preventDefault();
     console.log("you submitted the form");
     resetErrors();
+    let emailValid = false;
+    let firstNameValid = false;
+    let lastNameValid = false;
+    let passwordValid = false;
 
     //i am running certain functions for each input field
     inputFields.forEach((input)=>{
         const inputNameAttribute = input.getAttribute("name");
         const className = input.className;
-        console.log("The class name for the input is >>>", className);
-        console.log("The class attribute is>>>", inputNameAttribute);
+        //console.log("The class name for the input is >>>", className);
+        //console.log("The class attribute is>>>", inputNameAttribute);
 
-        validateField(className,inputNameAttribute);
-
+       const validated = validateField(className,inputNameAttribute);
+       
+       //if input value is valid, I store it in the object and clear
+       //the value from the input field
+       if(validated){
+        formObj[className] = input.value;
+        //console.log("Object so far >>>", formObj);
+        switch(className){
+            case "firstName": {
+                console.log("className >>>>",className);
+                firstNameValid= true;
+                break;
+            }
+            case "lastName": {
+                console.log("className >>>>",className);
+                lastNameValid= true;
+                break;
+            }  
+            case "email": {
+                console.log("className >>>>",className);
+                emailValid= true;
+                break;
+            }
+            case "password": {
+                console.log("className >>>>",className);
+                passwordValid= true;
+                break;
+            }
+        }
+       
+       }
     });
 
+    if(firstNameValid && lastNameValid && emailValid && passwordValid){
+         firstName.value = '';
+         lastName.value = '';
+         email.value = '';
+         password.value = '';
+         
+        console.log('Hey Baus');
+    }
+
 });
+
 
 ///this function validates all the input fields
 const validateField = (selector,attribute) =>{
@@ -45,7 +91,7 @@ const validateField = (selector,attribute) =>{
     const className = targetClass.className;
 
 
-    console.log("classname is >>>", className);
+    //console.log("classname is >>>", className);
 
     if(className === "email"){
         if(!inputValue){
@@ -57,11 +103,15 @@ const validateField = (selector,attribute) =>{
             errorEmailMessage.innerHTML = `
             <p>${attribute} cannot be empty</p>
             `
+            return false;
         }
         else if(!validateEmail(inputValue)){
+            const targetInput = document.querySelector(`.${selector}`);
+            targetInput.classList.add("error");
             errorEmailMessage.innerHTML = `
             <p>Looks like this is not an ${attribute}</p>
             `
+            return false;
         }
     }
 
@@ -76,6 +126,7 @@ const validateField = (selector,attribute) =>{
                 errorFirstMessage.innerHTML = `
                 <p>${attribute} cannot be empty</p>
                 `
+                return false;
             }
         if(targetInput.className === "lastName error")
             {
@@ -83,6 +134,7 @@ const validateField = (selector,attribute) =>{
                 errorLastMessage.innerHTML = `
                 <p>${attribute} cannot be empty</p>
                 `
+                return false;
             }
         if(targetInput.className === "password error")
             {
@@ -90,8 +142,11 @@ const validateField = (selector,attribute) =>{
                 errorPasswordMessage.innerHTML = `
                 <p>${attribute} cannot be empty</p>
                 `
+                return false;
             }
     }
+
+    return true;
 
 }
 
@@ -104,7 +159,7 @@ const validateEmail=(email)=>{
 
 ///Added event listeners to each input field to reset the errors in case they had some
 inputFields.forEach((input)=>{
-    input.addEventListener('keypress', ()=>{
+    input.addEventListener('input', ()=>{
         const inputClass = input.className;
         resetErrors(inputClass);
     })
