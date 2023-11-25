@@ -75,8 +75,9 @@ form.addEventListener('submit',(e)=> {
          lastName.value = '';
          email.value = '';
          password.value = '';
+
+         sendInfo(formObj);
          
-        console.log('Hey Baus');
     }
 
 });
